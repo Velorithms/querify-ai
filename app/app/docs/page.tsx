@@ -1,6 +1,9 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Book, Code, Database, Zap, Shield, TrendingUp } from "lucide-react";
+import AnimatedCard from "@/components/AnimatedCard";
 
 export default function DocsPage() {
   return (
@@ -17,32 +20,53 @@ export default function DocsPage() {
 
         <div className="space-y-8">
           {/* Getting Started */}
-          <Card className="bg-zinc-900 border-zinc-800">
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-blue-950/30 rounded-lg">
-                  <Zap className="w-5 h-5 text-blue-400" />
+          <AnimatedCard
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={300}
+            glowColor="132, 0, 255"
+          >
+            <Card className="bg-zinc-900 border-zinc-800">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-blue-950/30 rounded-lg">
+                    <Zap className="w-5 h-5 text-blue-400" />
+                  </div>
+                  <CardTitle className="text-white">Getting Started</CardTitle>
                 </div>
-                <CardTitle className="text-white">Getting Started</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-4 text-zinc-300">
-              <p>
-                Querify AI transforms natural language questions into SQL queries
-                using advanced AI. Simply type your question and let the AI do
-                the rest.
-              </p>
-              <div className="bg-black border border-zinc-800 rounded-lg p-4">
-                <p className="text-sm text-zinc-400 mb-2">Example:</p>
-                <p className="text-emerald-400 font-mono text-sm">
-                  "Show me the top 5 customers by total orders"
+              </CardHeader>
+              <CardContent className="space-y-4 text-zinc-300">
+                <p>
+                  Querify AI transforms natural language questions into SQL queries
+                  using advanced AI. Simply type your question and let the AI do
+                  the rest.
                 </p>
-              </div>
-            </CardContent>
-          </Card>
+                <div className="bg-black border border-zinc-800 rounded-lg p-4">
+                  <p className="text-sm text-zinc-400 mb-2">Example:</p>
+                  <p className="text-emerald-400 font-mono text-sm">
+                    "Show me the top 5 customers by total orders"
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </AnimatedCard>
 
           {/* Database Schema */}
-          <Card className="bg-zinc-900 border-zinc-800">
+          <AnimatedCard
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={300}
+            glowColor="132, 0, 255"
+          >
+            <Card className="bg-zinc-900 border-zinc-800">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-purple-950/30 rounded-lg">
@@ -138,9 +162,20 @@ export default function DocsPage() {
               </div>
             </CardContent>
           </Card>
+          </AnimatedCard>
 
           {/* Query Examples */}
-          <Card className="bg-zinc-900 border-zinc-800">
+          <AnimatedCard
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={300}
+            glowColor="132, 0, 255"
+          >
+            <Card className="bg-zinc-900 border-zinc-800">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-emerald-950/30 rounded-lg">
@@ -193,9 +228,20 @@ export default function DocsPage() {
               </div>
             </CardContent>
           </Card>
+          </AnimatedCard>
 
           {/* Security */}
-          <Card className="bg-zinc-900 border-zinc-800">
+          <AnimatedCard
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={300}
+            glowColor="132, 0, 255"
+          >
+            <Card className="bg-zinc-900 border-zinc-800">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-red-950/30 rounded-lg">
@@ -226,9 +272,20 @@ export default function DocsPage() {
               </ul>
             </CardContent>
           </Card>
+          </AnimatedCard>
 
           {/* Best Practices */}
-          <Card className="bg-zinc-900 border-zinc-800">
+          <AnimatedCard
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={300}
+            glowColor="132, 0, 255"
+          >
+            <Card className="bg-zinc-900 border-zinc-800">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-cyan-950/30 rounded-lg">
@@ -262,6 +319,7 @@ export default function DocsPage() {
               </ul>
             </CardContent>
           </Card>
+          </AnimatedCard>
         </div>
       </div>
     </div>

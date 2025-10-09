@@ -1,0 +1,23 @@
+/* AnimatedCard Component Styles */
+
+.animated-card-wrapper {
+  --glow-color: 132, 0, 255;
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-opacity: 0;
+}
+
+/* Ensure smooth transitions */
+.animated-card-wrapper > * {
+  transition: all 0.1s ease-out;
+}
+
+/* Preserve 3D transforms for children */
+.animated-card-wrapper > * {
+  transform-style: preserve-3d;
+}
+
+/* Ripple effect container */
+.animated-card-wrapper {
+  isolation: isolate;
+}

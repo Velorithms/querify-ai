@@ -1,205 +1,36 @@
-# Querify AI - Natural Language to SQL Query Tool
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Next.js](https://img.shields.io/badge/Next.js-15.5-black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
-![Prisma](https://img.shields.io/badge/Prisma-6.17-green)
+## Getting Started
 
-Transform natural language questions into SQL queries using AI. Perfect for data analysts, developers, and anyone who needs to query databases without writing SQL.
+First, run the development server:
 
-## ✨ Features
-
-### Core Features
-- 🤖 **AI-Powered SQL Generation** - Convert natural language to PostgreSQL queries using Google Gemini AI
-- 📊 **Multiple Chart Types** - Visualize data with bar, line, and pie charts
-- 📈 **Real-time Results** - Execute queries and see results instantly
-- 🔒 **SQL Safety Validation** - Prevents dangerous operations (only SELECT allowed)
-- 💾 **Query History** - Track and replay previous queries
-- 📥 **CSV Export** - Download query results as CSV files
-- ⚡ **Smart Schema Detection** - Automatically understands your database structure
-
-### Advanced Features
-- 🎯 **Intelligent Query Optimization** - AI suggests proper JOINs and aggregations
-- 📱 **Responsive Design** - Works on desktop, tablet, and mobile
-- ⌨️ **Keyboard Shortcuts** - Press Ctrl+Enter to run queries
-- 🎨 **Beautiful UI** - Modern, gradient-based design with smooth animations
-- 🔄 **Schema Caching** - Improved performance with smart caching
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 20+ installed
-- PostgreSQL database
-- Google Gemini API key ([Get one here](https://makersuite.google.com/app/apikey))
-
-### Installation
-
-1. **Install dependencies**
-```bash
-npm install
-```
-
-2. **Set up environment variables**
-
-Create a `.env` file in the root directory:
-
-```env
-# Database connection
-DATABASE_URL="postgresql://username:password@localhost:5432/your_database"
-
-# Google Gemini API Key
-GEMINI_API_KEY="your_gemini_api_key_here"
-
-# Optional: Node environment
-NODE_ENV="development"
-```
-
-3. **Set up the database**
-```bash
-# Push Prisma schema to database
-npx prisma db push
-
-# Seed with sample data
-npx prisma db seed
-```
-
-4. **Run the development server**
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-5. **Open your browser**
-Navigate to [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 📖 Usage Guide
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### Basic Queries
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-Just type natural language questions:
+## Learn More
 
-- "Show me the top 5 products by revenue"
-- "How many orders does each user have?"
-- "What's the average order value?"
-- "List all users who bought a Laptop"
-- "Show monthly revenue trend for 2024"
+To learn more about Next.js, take a look at the following resources:
 
-### Query Examples
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-**Simple Aggregation:**
-```
-Total number of orders
-```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-**Top N with Sorting:**
-```
-Top 10 customers by total spending
-```
+## Deploy on Vercel
 
-**Time-based Analysis:**
-```
-Monthly sales for 2024
-```
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### Advanced Features
-
-**Query History:**
-- Click the "History" button in the header
-- View all past queries with row counts and timestamps
-- Click any history item to reload that question
-
-**Export Data:**
-- After running a query, click "Export CSV"
-- Downloads results as a CSV file
-
-**Chart Types:**
-- Switch between Bar, Line, and Pie charts
-- Only available when results contain numeric data
-
-**Keyboard Shortcuts:**
-- `Ctrl + Enter` or `Cmd + Enter` - Run query
-- Click example chips for instant queries
-
-## 🗄️ Database Schema
-
-The app comes with a sample e-commerce schema:
-
-### Tables
-
-**users** - Customer information
-- `id`, `name`, `email`
-
-**products** - Product catalog
-- `id`, `name`, `price`
-
-**orders** - Order records
-- `id`, `user_id`, `order_date`, `total`
-
-**order_items** - Order line items
-- `id`, `order_id`, `product_id`, `quantity`, `unit_price`
-
-### Sample Data
-The seed script creates:
-- 8 users
-- 8 products  
-- 40 orders with random items and dates
-
-## 🛠️ Tech Stack
-
-- **Frontend:** Next.js 15, React 19, TypeScript
-- **Styling:** Tailwind CSS 4
-- **Database:** PostgreSQL with Prisma ORM
-- **Charts:** Recharts
-- **AI:** Google Gemini 2.0 Flash
-
-## 🔐 Security Features
-
-### SQL Injection Prevention
-- Only SELECT queries allowed
-- Validates against dangerous keywords
-- Blocks multiple statements
-- Removes SQL comments before execution
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**"API key not configured"**
-- Ensure `GEMINI_API_KEY` is set in your `.env` file
-- Restart the dev server after adding environment variables
-
-**"Database connection failed"**
-- Check your `DATABASE_URL` format
-- Ensure PostgreSQL is running
-- Verify database credentials
-
-**"No tables found"**
-- Run `npx prisma db push` to create tables
-- Check that you're using the correct database
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. Push your code to GitHub
-2. Import project in Vercel
-3. Add environment variables in Vercel dashboard:
-   - `DATABASE_URL`
-   - `GEMINI_API_KEY`
-4. Deploy!
-
-Compatible with: Netlify, Railway, AWS Amplify, Google Cloud Run
-
-## 📈 Performance Tips
-
-1. **Use specific questions** - More specific = better SQL
-2. **Include table names** - AI works better with context
-3. **Limit large results** - Mention "top 10" or "limit 100"
-4. **Use proper date formats** - Specify years/months clearly
-
-## 📝 License
-
-MIT License - feel free to use this project for personal or commercial purposes.
-
----
-
-Made with ❤️ using Next.js, TypeScript, and AI
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

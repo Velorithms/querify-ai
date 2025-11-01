@@ -1,110 +1,205 @@
-# Querify AI
+# Querify AI - Natural Language to SQL Query Tool
 
-<img src="https://img.shields.io/badge/Next.js-15-black?logo=next.js"> <img src="https://img.shields.io/badge/TypeScript-5-blue?logo=typescript"> <img src="https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&amp;logoColor=white">
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Next.js](https://img.shields.io/badge/Next.js-15.5-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+![Prisma](https://img.shields.io/badge/Prisma-6.17-green)
 
-A clean, well-documented starting point for this TypeScript/Next.js project.
+Transform natural language questions into SQL queries using AI. Perfect for data analysts, developers, and anyone who needs to query databases without writing SQL.
 
-This README provides:
-- What this repo is about
-- How to set up your local environment
-- Common scripts and developer workflow
-- A quick tour of the project structure
+## ✨ Features
 
+### Core Features
+- 🤖 **AI-Powered SQL Generation** - Convert natural language to PostgreSQL queries using Google Gemini AI
+- 📊 **Multiple Chart Types** - Visualize data with bar, line, and pie charts
+- 📈 **Real-time Results** - Execute queries and see results instantly
+- 🔒 **SQL Safety Validation** - Prevents dangerous operations (only SELECT allowed)
+- 💾 **Query History** - Track and replay previous queries
+- 📥 **CSV Export** - Download query results as CSV files
+- ⚡ **Smart Schema Detection** - Automatically understands your database structure
 
-## Features
-- Modern Next.js setup (TypeScript-ready)
-- Clear local development workflow
-- Extensible structure for components, utilities, and API routes
+### Advanced Features
+- 🎯 **Intelligent Query Optimization** - AI suggests proper JOINs and aggregations
+- 📱 **Responsive Design** - Works on desktop, tablet, and mobile
+- ⌨️ **Keyboard Shortcuts** - Press Ctrl+Enter to run queries
+- 🎨 **Beautiful UI** - Modern, gradient-based design with smooth animations
+- 🔄 **Schema Caching** - Improved performance with smart caching
 
-## Tech Stack
-- Next.js
-- React
-- TypeScript
+## 🚀 Quick Start
 
-## Requirements
-- Node.js >= 18
-- Package manager of your choice: `pnpm`, `npm`, or `yarn`
+### Prerequisites
+- Node.js 20+ installed
+- PostgreSQL database
+- Google Gemini API key ([Get one here](https://makersuite.google.com/app/apikey))
 
-## Getting Started
-Clone the repository and install dependencies:
+### Installation
 
+1. **Install dependencies**
 ```bash
-# with pnpm (recommended)
-pnpm install
-
-# or with npm
 npm install
-
-# or with yarn
-yarn install
 ```
 
-Run the development server:
+2. **Set up environment variables**
 
+Create a `.env` file in the root directory:
+
+```env
+# Database connection
+DATABASE_URL="postgresql://username:password@localhost:5432/your_database"
+
+# Google Gemini API Key
+GEMINI_API_KEY="your_gemini_api_key_here"
+
+# Optional: Node environment
+NODE_ENV="development"
+```
+
+3. **Set up the database**
 ```bash
-# pnpm
-pnpm dev
+# Push Prisma schema to database
+npx prisma db push
 
-# npm
+# Seed with sample data
+npx prisma db seed
+```
+
+4. **Run the development server**
+```bash
 npm run dev
-
-# yarn
-yarn dev
 ```
 
-Then open http://localhost:3000 in your browser.
+5. **Open your browser**
+Navigate to [http://localhost:3000](http://localhost:3000)
 
-## Available Scripts
-- `dev` – start the development server
-- `build` – create a production build
-- `start` – run the production server (after build)
-- `lint` – lint the codebase (if configured)
+## 📖 Usage Guide
 
-## Project Structure
-A typical layout for a Next.js (App Router) project looks like this:
+### Basic Queries
 
+Just type natural language questions:
+
+- "Show me the top 5 products by revenue"
+- "How many orders does each user have?"
+- "What's the average order value?"
+- "List all users who bought a Laptop"
+- "Show monthly revenue trend for 2024"
+
+### Query Examples
+
+**Simple Aggregation:**
 ```
-.
-├── app/                # App Router entry (routes, layouts, pages)
-├── components/         # Reusable UI components
-├── public/             # Static assets
-├── styles/             # Global and module CSS/SCSS
-├── lib/                # Utilities, helpers, and shared logic
-├── .github/            # Workflows and templates
-└── README.md           # You are here
-```
-
-Your repository may differ slightly—update this section as the project evolves.
-
-## Environment Variables
-Create a `.env.local` file at the project root to store environment variables for local development. For example:
-
-```
-# .env.local
-# EXAMPLE_API_KEY=your-api-key
+Total number of orders
 ```
 
-Never commit secrets. Use GitHub Actions secrets or your deployment platform's secret manager for production.
-
-## Testing
-If you add tests, consider a structure like:
-
+**Top N with Sorting:**
 ```
-__tests__/
-  unit/
-  integration/
+Top 10 customers by total spending
 ```
 
-And add scripts such as `test` and `test:watch` to package.json.
+**Time-based Analysis:**
+```
+Monthly sales for 2024
+```
 
-## Deployment
-- Vercel is a great default for Next.js apps. You can import the repo in Vercel and connect environment variables.
-- Other platforms (Netlify, Render, Docker/Kubernetes) are also supported—add notes here if you deploy elsewhere.
+### Advanced Features
 
-## Contributing
-- Fork the repo and create a feature branch
-- Commit with clear messages
-- Open a pull request describing the change
+**Query History:**
+- Click the "History" button in the header
+- View all past queries with row counts and timestamps
+- Click any history item to reload that question
 
-## License
-Add your license information here (e.g., MIT). If you include a LICENSE file, reference it from this section.
+**Export Data:**
+- After running a query, click "Export CSV"
+- Downloads results as a CSV file
+
+**Chart Types:**
+- Switch between Bar, Line, and Pie charts
+- Only available when results contain numeric data
+
+**Keyboard Shortcuts:**
+- `Ctrl + Enter` or `Cmd + Enter` - Run query
+- Click example chips for instant queries
+
+## 🗄️ Database Schema
+
+The app comes with a sample e-commerce schema:
+
+### Tables
+
+**users** - Customer information
+- `id`, `name`, `email`
+
+**products** - Product catalog
+- `id`, `name`, `price`
+
+**orders** - Order records
+- `id`, `user_id`, `order_date`, `total`
+
+**order_items** - Order line items
+- `id`, `order_id`, `product_id`, `quantity`, `unit_price`
+
+### Sample Data
+The seed script creates:
+- 8 users
+- 8 products  
+- 40 orders with random items and dates
+
+## 🛠️ Tech Stack
+
+- **Frontend:** Next.js 15, React 19, TypeScript
+- **Styling:** Tailwind CSS 4
+- **Database:** PostgreSQL with Prisma ORM
+- **Charts:** Recharts
+- **AI:** Google Gemini 2.0 Flash
+
+## 🔐 Security Features
+
+### SQL Injection Prevention
+- Only SELECT queries allowed
+- Validates against dangerous keywords
+- Blocks multiple statements
+- Removes SQL comments before execution
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**"API key not configured"**
+- Ensure `GEMINI_API_KEY` is set in your `.env` file
+- Restart the dev server after adding environment variables
+
+**"Database connection failed"**
+- Check your `DATABASE_URL` format
+- Ensure PostgreSQL is running
+- Verify database credentials
+
+**"No tables found"**
+- Run `npx prisma db push` to create tables
+- Check that you're using the correct database
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Import project in Vercel
+3. Add environment variables in Vercel dashboard:
+   - `DATABASE_URL`
+   - `GEMINI_API_KEY`
+4. Deploy!
+
+Compatible with: Netlify, Railway, AWS Amplify, Google Cloud Run
+
+## 📈 Performance Tips
+
+1. **Use specific questions** - More specific = better SQL
+2. **Include table names** - AI works better with context
+3. **Limit large results** - Mention "top 10" or "limit 100"
+4. **Use proper date formats** - Specify years/months clearly
+
+## 📝 License
+
+MIT License - feel free to use this project for personal or commercial purposes.
+
+---
+
+Made with ❤️ using Next.js, TypeScript, and AI
